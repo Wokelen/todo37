@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: sermalenk/skypro-front:lesson-36
+    image: sermalenk/skypro-front:lesson-37
     restart: always
     ports:
         - "80:80"
@@ -25,25 +25,6 @@ services:
         condition: service_completed_successfully
     ports:
       - "8000:8000"
-
-#  api:
-#    build: .
-#    restart: always
-#    env_file: .env
-#    environment:
-#      POSTGRES_HOST: db
-#    depends_on:
-#      db:
-#        condition: service_healthy
-#      migrations:
-#        condition: service_completed_successfully
-#    ports:
-#      - "8000:8000"
-#    volumes:
-#      - .core/:/opt/core
-#      - .todolist/:/opt/todolist
-#      - .goals/:/opt/goals
-#      - django_static/:opt/static
 
 
   migrations:
@@ -68,7 +49,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     restart: always
     ports:
-    - "5432:5432"
+    - "5445:5432"
     healthcheck:
       test: pg_isready -U ${DB_USER} -d ${DB_NAME}
       timeout: 3s

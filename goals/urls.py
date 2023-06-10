@@ -1,11 +1,16 @@
 from django.urls import path
 
+from goals.views.boards import BoardCreateView, BoardListView, BoardDetailView
 from goals.views.goal_category import GoalCategoryCreateView, GoalCategoryListView, GoalCategoryDetailView
 from goals.views.goals import GoalListView, GoalCreateView, GoalDetailView
 from goals.views.goal_comment import GoalCommentListView, GoalCommentCreateView, GoalCommentDetailView
 
 
 urlpatterns = [
+    # Board urls
+    path('board/create', BoardCreateView.as_view(), name='create_board'),
+    path('board/list', BoardListView.as_view(), name='board_list'),
+    path('board/<pk>', BoardDetailView.as_view(), name='board_detail'),
     # Category urls
     path('goal_category/create', GoalCategoryCreateView.as_view(), name='create_category'),
     path('goal_category/list', GoalCategoryListView.as_view(), name='category_list'),
@@ -21,21 +26,3 @@ urlpatterns = [
 ]
 
 
-
-
-# from django.urls import path
-#
-# from goals import views
-#
-#
-# urlpatterns = [
-#     path("goal/create", views.GoalCreateView.as_view()),
-#     path("goal/list", views.GoalListView.as_view()),
-#     path("goal/<int:pk>", views.GoalView.as_view()),
-#     path("goal_category/create", views.GoalCategoryCreateView.as_view()),
-#     path("goal_category/list", views.GoalCategoryListView.as_view()),
-#     path("goal_category/<int:pk>", views.GoalCategoryView.as_view()),
-#     path("goal_comment/create", views.GoalCommentCreateView.as_view()),
-#     path("goal_comment/list", views.GoalCommentListView.as_view()),
-#     path("goal_comment/<int:pk>", views.GoalCommentView.as_view()),
-# ]
